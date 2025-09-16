@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if 실습문제</title>
+</head>
+<body>
+    <input type="text" id="str1">
+    <input type="text" id="str2">
+    <button onclick="strR()">확인</button>
+    <p id="output"></p>
+
+    <script>
+        function strR(){
+        let str1 = Number(document.getElementById('str1').value);
+        let str2 = Number(document.getElementById('str2').value);
+        let output = document.getElementById('output');
+        // console.log(str+str2);
+        if(str1 >= 50 && str2 >= 50) output.innerHTML= '통과!';
+        else output.innerHTML='실패';
+
+        }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if 실습문제</title>
+</head>
+<body>
+    <h1>문제4</h1>
+    <input type="number" id="str">
+    <button onclick="strF()">확인</button>
+    <p id="output"></p>
+
+    <script>
+        function strF(){
+        let str = Number(document.getElementById('str').value);
+        const output = document.getElementById('output');
+        if(str >= 1 && str <= 10){
+        console.log(`확인`);
+        output.innerHTML = `범위안에있음`;
+        }else output.innerHTML='범위안에없음'
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if 실습문제</title>
+</head>
+<body>
+    <h1>문제3</h1>
+    <input type="number" id="tem">
+    <button onclick="temF()">확인</button>
+    <p id="output"></p>
+
+    <script>
+        function temF(){
+        let tem = Number(document.getElementById('tem').value);
+        const output = document.getElementById('output');
+        let result = '';
+        if(tem<=0) result='영하';
+        else if(tem< 30) result='보통';
+        else result='더움';
+        console.log(result);
+        output.innerHTML = result;
+        }
+    </script>
+</body>
+</html>

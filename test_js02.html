@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js 연산</title>
+</head>
+<body>
+    <button onclick="problem2()">문제: 두 수 더하기</button>
+    <p id = "p2"></p>
+
+    <script>
+        function problem2(){
+            let sum1 = 10;
+            let sum2 = 5;
+            //값의 error의 존재 유무 파악하기 위한 디버깅 용 
+            let he1 =  document.getElementById('p2');
+            console.log(`sum1:${sum1} , sum2:${sum2}`);
+            he1.innerHTML = `합계:  ${sum1 + sum2}`; 
+        }
+    </script>
+</body>
+</html>
