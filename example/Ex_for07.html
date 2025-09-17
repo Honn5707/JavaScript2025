@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>1부터 ~n까지의 합</h1>
+    <input id="input" type="text">
+    <button onclick="addF()">실행</button>
+    <p id="output"></p>
+
+    <script>
+        let output = document.getElementById('output');
+        let result = '';
+        function addF(){
+        let input = Number(document.getElementById('input').value);
+
+        for(let i = 1; i<= input; i++){
+            result += i;
+        }
+
+        output.innerText = `1부터 ${input} 까지의 합 : ${result}`;
+    }
+
+    //다중 for문 
+    //for문안에 for문이 추가로 존재 
+    for(let i = 1; i<=3; i++){
+        for(let j = 1; j<=i; j++){// 안쪽 루프 = 세로
+            //줄바꿈 기호
+            result +='*';
+        }
+        //줄바꿈
+        result += '<br>';
+    }
+    output.innerHTML = result;
+        
+    </script>
+</body>
+</html>

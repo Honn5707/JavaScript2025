@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>직각삼각형</title>
+</head> 
+<body>
+    <h1>직각삼각형</h1>
+    <p id="output"></p>
+
+    <script>
+        let result = '';
+        let ast = 1;
+        let output = document.getElementById('output');
+
+        
+        for(let i = 6; i >= 1; i--){
+            for(let k= 1; k<=i+ast; k++){
+                    result += `&nbsp`;  
+                }
+            for(let j= 1; j<=i; j++){
+                    result += `*`;
+                }
+                ast+=2;
+            
+            result += `<br>`;
+    }
+
+        output.innerHTML = result;
+    </script>
+</body>
+</html>

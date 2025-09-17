@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구구단</title>
+</head> 
+<body>
+    <h1>문제 10단: 2단~ 9단 출력</h1>
+    <p id="output"></p>
+
+    <script>
+        let result = '';
+        let output = document.getElementById('output');
+        for(let i = 2; i<=9; i++ ){
+            result += `\n${i}단 \n`;
+            for(let j= 1; j<=9; j++){
+                result += `${i} x ${j} = ${i*j} \n`;
+            }
+
+            output.innerText = result;
+        }
+    </script>
+</body>
+</html>
