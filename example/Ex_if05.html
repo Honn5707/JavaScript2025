@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if 실습문제</title>
+</head>
+<body>
+    <h1>문제5</h1>
+    <input type="number" id="scoreK">
+    <input type="number" id="scoreE">
+    <input type="number" id="scoreM">
+    <button onclick="temF()">확인</button>
+    <p id="output"></p>
+
+    <script>
+        function temF(){
+        let scoreK = Number(document.getElementById('scoreK').value);
+        let scoreE = Number(document.getElementById('scoreE').value);
+        let scoreM = Number(document.getElementById('scoreM').value);
+        const output = document.getElementById('output');
+        let avg = (scoreE+scoreK+scoreM)/3;
+        if(avg>=70) result=` 평균: ${avg} 합격`;
+        else result=` 평균: ${avg} 불합격`;
+        
+
+        console.log(result);
+        output.innerHTML = result;
+        }
+    </script>
+</body>
+</html>

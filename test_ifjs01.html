@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if 조건문</title>
+</head>
+<body>
+    <!-- 짝수/홀수 출력 => 콘솔 -->
+     <h1>javaScript if</h1>
+
+     <input id = '_id'>
+     <input id = '_pw'>
+     <button onclick="idpw()"></button>
+     <p id = 'output'></p>
+     <script>
+        // let num = 3;
+        // if(num%2 == 0){
+        //     // 조건이 만족하는 true 영역            
+        //     console.log("num" + num);
+        // }else{
+        //     //조건을 만족하지 않을 떄 false
+        //     console.log(`num : ${num}`);
+        // }
+        // 나이가 20이상이면 성인입니다. 아니면 미성년자 입니다.
+        // if ~ else 
+        // let age = 20;
+        // age =15;
+        // if(age>= 20){
+        //     console.log(`성인입니다 ${age}`);
+        // }else{
+        //     console.log(`미성년자 입니다. ${age}`);
+        // }
+
+        // // 다중 if => 조건 2개 이상인 경우
+        // //score가 90이상이면 A 80이상이면 B 70이상이면 C 60이상이면 D, 그 외 F
+        // let score = 55;
+        // if(score >= 90){
+        //     console.log(`A`);
+        // }else if(score >= 80){
+        //     console.log(`B`);
+        // }else if(score >= 70){
+        //     console.log(`C`);
+        // }else if(score >= 60){
+        //     console.log(`D`);
+        // }else{
+        //     //조건을 모두 만족하지 않는 나머지  
+        //     console.log(`F`);
+        // }
+
+        //숫 자 3개 중 최대값 
+        // a=15, b=5, c=-1
+
+//         let a = 45;
+//         let b = 40;
+//         let c = 10;
+//         //임시 변수 =>a값을 상수로 사용
+//         let max = a;
+
+//         if(b>max){
+//             max = b;
+//             console.log(`A가 최댓값`);
+//         }else if(c> max){
+//             max = c;
+//             console.log(`${max}`)
+//         }console.log(`최댓값 : ${max}`);
+// //         else if(b>a && b>c)console.log(`B가 최댓값`);
+// //         else if(c>a && c>b)console.log(`C가 최댓값`);
+// //         else(`최댓값 x`);
+
+        //id='admin', pw='admin1234' -> 로그인 성공 / 실패
+        // const aid = 'admin'
+        // const apw = 'admin1234'
+
+        // function idpw(){
+        // let in_id = document.getElementById('_id');
+        // let in_pw = document.getElementById('_pw');
+        
+        // if(in_id._id== aid && in_pw.pw == apw)console.log('로그인 성공');
+        // else console.log('로그인 실패');
+        // }
+        // if(ab > 0 && ac > 0){
+        //     console.log(`A(${a})가 최댓값`);
+        // }else if(ab < 0 && bc > 0){
+        //     console.log(`B(${b})가 최댓값`);
+        // }else if(ac < 0 && bc < 0){
+        //     console.log(`C${c}가 최댓값`);
+        // }else{console.log(`단독 최댓값 없음`)}
+
+        //숫자 비교 
+        //x=5, y=7 => x가 y보다 크면 x
+        //y가 x보다 크면 x
+        //x하고 y가 같으면 같다
+        
+        // let x = 7;
+        // let y = 7;
+        // if(x>y)console.log(x);
+        // else if(x<y)console.log(y);
+        // else console.log(`같음`);
+
+
+        // 양수/음수/0 출력하기
+        // k=-1;
+        let a = 0;
+        a=3;
+        if(a>0) console.log(`양수 ${a}`);
+        if(a<0) console.log(`음수 ${a}`);
+        if(a==0) console.log('0');
+        
+    </script>
+</body>
+</html>

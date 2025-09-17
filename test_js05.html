@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="a" placeholder="첫 번째 숫자">
+        <input type="number" id="b" placeholder="두 번째 숫자">
+        <button onclick="calc()">계산</button>
+        <p id="output3"></p>
+
+
+        <script>
+            function calc(){ 
+                let firstNumber = Number(document.getElementById('a').value);
+                let secendNumber = Number(document.getElementById('b').value);
+                // 값 변수 나눠서 구조화 하기
+                // 코드의 구조화란 => 코드의 간략화이다.
+                let result = `합: ${firstNumber+secendNumber} 차 ${firstNumber-secendNumber} 곱: ${firstNumber*secendNumber} 나누기: ${firstNumber/secendNumber}`;
+                
+                console.log(result);
+                document.getElementById('output3').innerHTML = result;
+            }
+
+            //&& : and의미, 그리고 ~ 조건을 모두 만족할 때 true, false 
+            //|| : or의미, 또는 ~~ 조건중 하나라도 만족할 때  true, false 
+            //! : not의미 (true) = > false  조건의 부정이므로 false 
+            // 엑셀이 40점이상이면서 액세스가 40점이상이면서 평균이 60점이상이면 
+            // 컴활 합격, 아니면 불합격
+
+            let num = 0;
+            let num2 = 60;
+            let avg = (num+num2)/2;
+            num >= 40 && num2 >=40 && avg >= 60 ? '합격' : '불합격';
+            console.log(`avg:${avg}, ${num >= 40 && num2 >=40 && avg >= 60}`);
+        </script>
+</body>
+</html>

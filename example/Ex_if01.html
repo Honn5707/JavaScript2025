@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if 실습문제</title>
+</head>
+<body>
+    <input type="text" id="str">
+    <button onclick="strR()">확인</button>
+    <p id="output"></p>
+
+    <script>
+        function strR(){
+            //input 안의 입력한 값을 읽어드림 : value
+        let str = document.getElementById('str').value;
+        let output = document.getElementById('output');
+        
+        if(str == 'y' || str == 'Y') output.innerHTML= '예';
+        else output.innerHTML='아니요';
+        }
+        
+    </script>
+</body>
+</html>

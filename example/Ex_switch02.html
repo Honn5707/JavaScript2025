@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="FruitF()">과일 가격</button>
+    <input type="text" id = "priceFruit">
+    <p id="output"></p>
+
+    <script>
+    function FruitF(){
+        let priceFruit = document.getElementById('priceFruit').value;
+        let output = document.getElementById('output');
+
+        //switch에서 true 서용시 반드시 case 조건식 입력
+        switch(priceFruit){
+            case 'apple':
+                output.innerHTML = '5000'
+                break;
+            case 'banana':
+                output.innerHTML = '13000'
+                break;
+            case 'orange':
+                output.innerHTML = '9000'
+                break;
+            default:
+                output.innerHTML = '해당 과일은 없습니다.'
+                break;
+        }
+    }
+    </script>
+</body>
+</html>

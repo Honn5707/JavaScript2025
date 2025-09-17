@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>while</title>
+</head>
+<body>
+    <h1>1부터 10까지 중 홀수 출력</h1>
+    <p id="output"></p>
+
+    <script>
+      
+        let output = document.getElementById('output');
+        let a=1;
+        let result = '';
+        while(a<=10){
+            if(a%2 != 0) result += a + ' ';
+            a++;
+        }
+        output.innerHTML = result;
+         
+        
+
+    </script>
+</body>
+</html>

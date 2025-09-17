@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>while</title>
+</head>
+<body>
+    <h1>사용자 입력 횟수만큼 Hello 출력</h1>
+    <input type="number" id="input">
+    <button onclick="whileEx()">확인</button>
+    <ul id="output"></ul>
+
+    <script>
+        function whileEx(){
+        let output = document.getElementById('output');
+        let input = Number(document.getElementById('input').value);
+        let a=1;
+        let result = '';
+        while(a<=input){
+            result = 'Hello';
+            output.innerHtml = <li>result</li>;
+            a++;
+            }
+        
+         
+        
+        }
+    </script>
+</body>
+</html>
