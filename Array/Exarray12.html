@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>array 심화학습</title>
+</head>
+<body>
+    <h1>배열 + for문 +if 문제</h1>
+    <label>5번 장바구니 가격 배열 입력( 예 : 12000,32232)</label>
+    <input type="text" id="input">
+    <button onclick="Play()">확인</button>
+    <p id = 'output'></p>
+
+    <script>
+        let input2 = [];
+        let result = [];
+        function Play(){
+            let input = document.getElementById('input').value;
+
+            let output = document.getElementById('output');
+            input2 = input.split(',').map(Number);
+             result = '';
+                for(let i=0; i <= input2.length - 1; i++){
+                    // result += input2[i] >= 10000  ? `${input2[i]}원: 고가,` : 
+                    // input2[i] >= 5000  ? `${input2[i]}원: 중저가,` : `${input2[i]}원: 저가,`; 
+                    // trim()=> 공백이라는 '문자'를 제거하는 함수
+                    switch(true){
+                        case input2[i] >= 10000:
+                            result += input2[i] + '고가,';
+                            break;
+                        case input2[i] >= 5000:
+                            result += input2[i] + ' 중저가,';
+                            break;
+                        default:
+                            result += input2[i]+'저가,';
+                            break;
+                    }
+                }
+            
+            output.innerText = result;
+    }
+    </script>
+</body>
+</html>

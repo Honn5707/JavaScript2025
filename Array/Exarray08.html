@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>array 심화학습</title>
+</head>
+<body>
+    <label>점수 : 배열 입력(예:90,70,50,60)</label>
+    <input type="text" id = 'scoreInput'>
+    <button type="button" onclick="scoreClick()">결과확인</button>
+    <p id="output"></p>
+
+    <script>
+        let scores = [];
+
+        function scoreClick(){
+            let output = document.getElementById('output');
+            let scoreInput = document.getElementById('scoreInput').value;
+            scoreInput += '/';
+            // 자바스크립트는 문자가 아니라 문자열(String)을 가진다.
+            // String 문자열 객체
+            let result1 ='';
+            let result2 ='';
+            scores = scoreInput;
+            for(let i = 0; i<= scores.length-1; i++){
+                if(scores[i] != '/') result1 += scores[i]; 
+                else{
+                    result2 += Number(result1) >= 90 ? `${result1} 은 A \n` : Number(result1) >= 80 ? `${result1} 은 B\n` : Number(result1) >= 70 ? `${result1} 은 C\n` : `${result1} 은 F\n`;
+                    result1 = '';
+                    console.log('if문1번');    
+                }
+                console.log(scores[i]);
+            }
+            output.innerText = result2;
+        }
+    </script>
+</body>
+</html>

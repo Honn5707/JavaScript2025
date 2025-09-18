@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>array 심화학습</title>
+</head>
+<body>
+    <h1>배열 + for문 + if문 문제</h1>
+    <label>출석,결석,지각 입력:</label>
+    <input type="text" id = 'input'>
+    <button type="button" onclick="Check()">결과확인</button>
+    <h1 id="output"></h1>
+
+    <script>
+        function Check(){
+        let input  = document.getElementById('input').value;
+        let output = document.getElementById('output');
+        input += ' ';
+
+        let result1 = '';
+        let result2 = '';
+
+        //trim()=> 왼쪽, 오른쪽 공백을 제거하는 함수
+
+        for(let i = 0; i <= input.length-1; i++){
+            if(input[i] != ' ') result1 += input[i];
+            else{
+                // === < - 정확한 메모리 값 비교
+                result2 += result1 == '출석' ? ' ○ ' : input[i] == '조퇴' ? ' △ ' : ' X ';
+                result1 = '';  
+            }   
+        }
+        output.innerText = result2;
+    }
+
+    
+    //a = input.
+        
+        
+
+    </script>
+</body>
+</html>

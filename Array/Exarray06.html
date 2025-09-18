@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array 기초 연습</title>
+</head>
+<body>
+    <p id ="output"></p>
+    <script>
+        let output = document.getElementById('output');
+        
+        let arr2 = [10,20,30,40];
+
+        let result = '';
+        for(let i=0; i<=arr2.length - 1; i++){
+            if(arr2[i] >= 25) result += arr2[i] + ' ';
+        }
+        output.innerText = result;
+
+    </script>
+</body>
+</html>

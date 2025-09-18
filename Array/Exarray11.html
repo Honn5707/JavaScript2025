@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>array 심화학습</title>
+</head>
+<body>
+    <h1>배열 + for문 +if 문제</h1>
+    <label>4번 온도 배열 입력 ( ex: 15, 22...)</label>
+    <input type="text" id="input">
+    <button onclick="Play()">확인</button>
+    <p id = 'output'></p>
+
+    <script>
+        let input2 = [];
+        function Play(){
+            let input = document.getElementById('input').value;
+            let output = document.getElementById('output');
+            input2 = input.split(',').map(Number);
+            let result = '';
+                for(let i=0; i <= input2.length - 1; i++){
+                    result += input2[i] >= 30 ? `${input2[i]}:뜨거움 ` : input2[i] >= 20 ? `${input2[i]}:적당` : `${input2[i]}:시원`;
+                }
+            output.innerHTML = result;
+    }
+    </script>
+</body>
+</html>
