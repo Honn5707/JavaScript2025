@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        .red{
+            color: red;
+        }
+        .green{
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>성적표 출력</h1>
+    <p>양식: 민희 x점 철수 x 점....</p>
+    <input type="text" id="input">
+    <button onclick="Play()">성적표 출력</button>
+    <p id = 'output'></p>
+   
+
+    <script>
+
+        function Play(){
+        let input = document.getElementById('input').value;
+        let output = document.getElementById('output');
+        let result1 = '';
+        let result2 = '';
+
+        for(let i= 0; i<= input.length - 1; i++){
+            result1 += input[i];
+            if(input[i]>='0' && input[i]<='9') result2 += input[i];
+            else if(input[i]==='점'){
+                result1 += Number(result2) >= 60 ? `<span class="red"> 합격</span><br>` : `:<span class='green'> 불합격</span><br>`;
+                result2 = '';
+            } 
+            
+        }
+        output.innerHTML = result1;
+    }
+        
+
+
+
+
+    </script>
+</body>
+</html>

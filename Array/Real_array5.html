@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        body{text-align: center;}
+        table{border:1px;}
+        input {
+            width: 200px;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid rgb(132, 124, 241);
+        }
+        button{
+            cursor: pointer;
+            padding: 10px;
+            border: none;
+        }
+        .red{
+            color: red;
+        }
+        .gray{
+            color: rgb(132, 124, 241);
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>영화 평점 분석(영화명:점수 영화명:점수)</h1>
+    <input type="text" id="input"> 
+    <button onclick="Play()">평점확인</button>
+    <p id="output"></p>
+
+    <script>
+        let input2 = [];
+        let input3 = [];
+        let Data = [];
+        function Play(){
+        let input = document.getElementById('input').value;
+        let output = document.getElementById('output');
+        input2 = input.split('점');
+        
+        let result = '';
+        
+ 
+        //배열 나누기
+        for(let i = 0; i<=input2.length-2; i++){
+            input3 = input2[i].split(':');
+            Data[i] = input3;
+        }
+
+        let i = 0;
+        let j = 0;
+        while(true){
+            if(i >= Data.length)break;
+         
+            if(Number(Data[i][j]) >= 8) result += ` ${Data[i][j]}점:<span class='red'><strong> 추천 </strong></span> <br>` ;
+            
+            else if(Number(Data[i][j]) < 8) result += ` ${Data[i][j]}점:<span class='gray'><strong> 비추천 </strong></span> <br>` ;
+            
+            else result += `${Data[i][j]}`;
+            j++;
+
+            if(j >= Data[i].length){
+                 j=0;
+                 i++;
+            }  
+        }
+        output.innerHTML = result;
+
+}    
+        
+    
+     
+
+
+
+
+    </script>
+</body>
+</html>

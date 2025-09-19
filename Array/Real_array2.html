@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        body{text-align: center;}
+        .red{
+            color: red;
+        }
+        .blue{
+            color: skyblue;
+        }
+        input , button{
+            width: 200px;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+<body>
+    <h1>책 재고 현황</h1>
+    <p>양식: xx x권</p>
+    <input type="text" id="input">
+    <button onclick="Play()">재고 확인</button>
+    <p id = 'output'></p>
+   
+
+    <script>
+
+        function Play(){
+        let input = document.getElementById('input').value;
+        let output = document.getElementById('output');
+        let result1 = '';
+        let result2 = '';
+        for(let i= 0; i<= input.length - 1; i++){
+            if(input[i]== '&' || input[i]>'ㄱ ' ||(input[i]>'A' && input[i]<'Z') || 
+                (input[i]>'a' && input[i]<'z') || (input[i]>='0' && input[i]<='9')) result1 += input[i];
+            if(input[i]>='0' && input[i]<='9') result2 += input[i];
+            if(input[i]==='권'){
+                result1 += ' ' + Number(result2) < 5 ? `- <span class="red"> 재고부족</span><br>` : `- <span class="blue">재고 충분</span><br>`;
+                result2 = '';
+            } 
+        }
+        output.innerHTML = result1;
+    }
+        
+
+
+
+
+    </script>
+</body>
+</html>

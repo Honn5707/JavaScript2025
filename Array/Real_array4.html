@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        body{text-align: center;}
+        table{border:1px;}
+        
+    </style>
+</head>
+<body>
+    <h1>투표결과</h1>
+    <input type="text" id="input"> 
+    <button onclick="Play()">투표 집계</button>
+    <p id="output"></p>
+
+    <script>
+        let input2 = [];
+        let input3 = [];
+        let Data = [];
+        function Play(){
+        let input = document.getElementById('input').value;
+        let output = document.getElementById('output')
+        input2 = input.split('/');
+        
+        let lastTurn = 0;
+        let dataLength = 0;
+        let result = '';
+        let reuslt2 = '';
+        let _Num = '';
+        let _Num2 = '';
+ 
+        //배열 나누기
+        for(let i = 0; i<=input2.length-1; i++){
+            input3 = input2[i].split(':');
+            Data[i] = input3;
+             _Num += input3[1] + ':';
+        }
+
+        //오름차순 정리
+        _Num2 = _Num.split(':').map(Number);
+        _Num2.sort((a,b) => b-a);
+        
+        //출력
+            for(let i= 0; i<= Data.length - 1; i++){
+                for(let j =0; j <=Data[i].length - 1; j++){
+                    result += `${Data[i][j]}`;
+                     if(Number(Data[i][j])>=0 && Number(Data[i][j])<=999) {
+                        console.log(_Num2[0]);
+                        result += Number(Data[i][j]) == _Num2[0] ? ` 1등` : ``; 
+                     }
+                    }
+                 result += '<br>';
+                 
+            }
+            output.innerHTML = result;
+
+}    
+        
+    
+     
+
+
+
+
+    </script>
+</body>
+</html>

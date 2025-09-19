@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        body{text-align: center;}
+        table{border:1px;}
+        
+    </style>
+</head>
+<body>
+    <h1>상품 가격 비교</h1>
+    <input type="text" id="input"> 
+    <button onclick="Play()">상품 출력</button>
+    <table border="1" id = 'output'></table>
+
+    <script>
+        let input2 = [];
+        let input3 = [];
+        let Data = [];
+        function Play(){
+        let input = document.getElementById('input').value;
+        let output = document.getElementById('output')
+        input2 = input.split('/');
+        
+        let lastTurn = 0;
+        let dataLength = 0;
+        let result = '';
+        let reuslt2 = '';
+
+        //배열 나누기
+        for(let i = 0; i<=input2.length-1; i++){
+            input3 = input2[i].split(':');
+            Data[i] = input3;
+        }
+        //출력
+            for(let i= 0; i<= Data.length - 1; i++){
+                result += '<tr>';
+                
+                for(let j =0; j <=Data[i].length - 1; j++){
+                    
+    
+                    result += `<th>${Data[i][j]}</th>`;
+                     if(Data[i][j]>='0' && Data[i][j]<='99999') {
+                        Data[i][j];
+                        console.log(Data[i][j]);
+                        result += Data[i][j] >= '50000원' ? '<th><span class="red">고가</red></th>' : '<th><span class="blue">저가</th>';
+                     }
+                    console.log(result);
+                    
+                }    
+                 result += '</tr><br>';
+                 
+            }
+            output.innerHTML = result;
+
+}    
+        
+    
+     
+
+
+
+
+    </script>
+</body>
+</html>
