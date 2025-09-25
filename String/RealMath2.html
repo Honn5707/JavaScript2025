@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>2.랜덤문자열추출</h1>
+    <button onclick="Fu()">버튼</button>
+    <p id ="output"></p>
+    <script>
+        function Fu(){
+        let names=`JavaScript`;
+        let randomVar = Math.floor(Math.random()*100) + 1;
+        let output = document.getElementById('output');
+        let result = '';
+        let nameLength = randomVar%names.length;
+        console.log(names.length-1)
+        result = names[nameLength];
+
+
+        output.innerHTML = result;
+        }
+
+        
+    </script>
+</body>
+</html>

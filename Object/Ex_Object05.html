@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장바구니</title>
+</head>
+<body>
+    <h1>2. 쇼핑몰 장바구니 총액</h1>
+    <p id = 'output'></p>
+
+    <script>
+        const output = document.getElementById('output')
+        let cart = [
+            {name: '노트북', price: 1000000, quantity:1},
+            {name: '마우스', price: 20000, quantity:2},
+            {name: '키보드', price: 50000, quantity:1}
+        ]
+        let result = '';
+        let total  = 0;
+        for(let i = 0; i<cart.length; i++){
+            result += `${cart[i].name} 금액 : ${(cart[i].price*cart[i].quantity).toLocaleString('ko-kr')}원 <br>`;
+            total += cart[i].price * cart[i].quantity;
+        }
+        result += `장바구니 총 금액: ${total.toLocaleString('ko-kr')} 원 <br>`;
+        output.innerHTML = result;
+        
+    </script>
+</body>
+</html>

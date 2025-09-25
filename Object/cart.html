@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장바구니 구현</title>
+    <style>
+        body{
+            display: flex;
+             flex-direction:  column;
+             align-items: center;
+            font-family: sans-serif;
+            margin: 30px;
+            background-color: #9f9f9f;
+        }
+        h2{
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table{
+            width: 700px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        th,td{
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        th{background-color: #4caf50; color: white;}
+         button{
+            margin: 5px;
+            padding: 5px 10px; 
+            border: none;
+
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .Plus{
+            background-color: #4caf50;
+            color: white;
+        }
+        .Minus{
+            background-color: #f39c12;
+            color: white;
+        }
+        .Cancel{
+            background-color: #e74c3c;
+            color: white;
+        }
+        #total{
+            width: 700px;
+            /* margin-left:  300px; */
+            text-align: right;
+            margin: 20px;
+            font-weight: 600;
+            margin-right: 100x;
+        }
+    </style>
+</head>
+<body>
+        <h2>장바구니</h2>
+        <table id="cartTable">
+            <thead>
+                <tr>
+                <th>상품명</th>
+                <th>가격</th>
+                <th>수량</th>
+                <th>합계</th>
+                <th>조작</th>
+                </tr>
+            </thead>
+            <tbody id="cartBody"></tbody>
+        </table>
+
+        <div id="total"></div>
+
+        <script>
+
+            //장바구니 구현 데이터
+            let cart = [
+            {id:1, name: '노트북', price: 1000, quantity:1},
+            {id:2, name: '마우스', price: 500, quantity:2},
+            {id:3, name: '키보드', price: 870, quantity:2}
+            ]
+
+            //장바구니 cartbody에 들어가는 테이블 구현 function renderCart(){}
+            function renderCart(){
+                let cartBody = document.getElementById('cartBody');
+                let total = document.getElementById('total');
+                let result = '';
+                let itemTotal = 0;
+
+
+                for(let i = 0; i<cart.length; i++){
+                    itemTotal += cart[i].price*cart[i].quantity;
+                //cart 배열 오브젝트의 각 항목을 테이블의 <tr>~</tr>
+                result += ` 
+                <tr>
+                    <td>${cart[i].name}</td>
+                    <td>${cart[i].price.toLocaleString('kor-kr')}원</td>
+                    <td>${cart[i].quantity}</td> 
+                    <td>${(cart[i].price*cart[i].quantity).toLocaleString('ko-kr')}원</td>
+                    <td> <button class="Plus" onclick = "increase(${i})"> + </button>
+                        <button class="Minus" onclick = "decrease(${i})"> - </button>
+                        <button class="Cacnel" onclick = "remover(${i})"> x </button></td>
+                </tr>
+                `
+            }
+                cartBody.innerHTML = result;
+                total.innerHTML = `총 금액: ${itemTotal}`;
+            }
+                
+
+            renderCart();
+            
+            // 함수 작성 시 매개변수 지정해야함
+             function increase(indexNum){
+                if(cart[indexNum].quantity < 10) cart[indexNum].quantity += 1;
+                else alert('더 이상 증가 불가능');
+                renderCart();
+            }
+             function decrease(indexNum){
+                if(cart[indexNum].quantity > 0) cart[indexNum].quantity -= 1;
+                else alert('수량은 최소 1개입니다.');
+                renderCart();
+            }
+             function remover(indexNum){
+                
+                cart.splice(indexNum, indexNum+1);
+                console.log(cart[indexNum]);
+                renderCart();
+            }
+        </script>
+
+</body>
+</html>

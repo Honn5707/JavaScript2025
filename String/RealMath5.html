@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>5.문자열 공백제거 후 길이 출력</h1>
+    <button onclick="Fu()">버튼</button>
+    <p id ="output"></p>
+    <script>
+        function Fu(){
+        let names=" Hello JavaScript ";
+        let output = document.getElementById('output');
+        let result = '';
+        
+        result += '공백 제거 후: [' + names.trim() +'],' + '길이:' + names.trim().length; 
+
+        
+        output.innerHTML =  result;
+        }
+
+        
+    </script>
+</body>
+</html>

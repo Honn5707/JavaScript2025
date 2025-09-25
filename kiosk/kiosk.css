@@ -1,0 +1,173 @@
+@charset "utf-8";
+
+*{margin: 0; padding: 0; text-align: ce;}
+
+.wrap{display: flex; border: 1px solid orange;  width: 1200px; height: 900px;}
+.section1{
+    width: 93%;
+
+}
+.order_menu{width: 100%; background-color: rgb(255, 255, 255); text-align:  center;}
+
+.order_menu> h2{color:rgb(255, 148, 8);margin-top: 10px;}
+.section1 > h2{color: rgb(82, 82, 82); margin-top: 10px;}
+.order_menu p{color: rgba(0, 0, 0, 0.507); margin-top: 10px;}
+.section1 .menubox{
+    padding-left: 10px;
+    margin-top: 40px;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+   justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.section1 .menubox .menu{
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(228, 192, 127, 0.911);
+    cursor: pointer;
+    width: 150px;
+
+    
+    height: 200px;
+    position: relative;
+
+    
+}
+
+.section1 .menubox .menu:hover{
+    background-color: darkorange;
+}
+
+.section1 .menubox .menu img{
+    background-color: rgba(255, 166, 0, 0.521);
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    bottom: 40%;
+    left: 50%;
+    transform: translate(-50%);
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+
+.section1 .menubox .menu .menu_type{
+    position: absolute;
+
+    left: 10px;
+    top:10px;
+    color: rgb(109, 109, 109);
+    font-weight: 600;
+}
+
+.section1 .menubox .menu .menu_name{
+    width: 60%;
+    
+    position: absolute;
+    top: 120px;
+    right: 20%;
+}
+
+.section1 .menubox .menu .menu_price{
+    position: absolute;
+    bottom: 10px;
+    right: 35%;
+    font-weight: 600;
+}
+
+
+
+
+
+
+.section2{
+    background-color: rgba(128, 128, 128, 0.082);
+    text-align: right;
+    padding: 10px;
+    width: 65%;
+    border: 3px solid rgba(255, 166, 0, 0.411);
+    position: relative;
+}
+.section2 > h2{
+    margin-right: 10px;
+    margin-top: 10px;
+    color: rgb(253, 117, 38);
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(0, 0, 0);
+}
+
+.section2 .order_result{
+    width: 100%;
+    position: absolute;
+    bottom: 20px;
+    align-items: center;
+    text-align: center;
+}
+
+.section2 .order_result span{
+    font-size: 30px;
+}
+
+.section2 .order_result .btn{
+    cursor: pointer;
+    width: 90%;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    background-color: orange;
+    color: white;
+}
+.section2 .order_result .btn:hover{
+    background-color: darkgoldenrod;
+}
+.section2 .order_result {
+    width: 100%;
+}
+
+
+.section2 .hold_price{
+    width: 90%;
+    text-align: right;
+    padding-right: 30px;
+    border-bottom:  1px solid orange;
+    padding-top: 20px;    
+    padding-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    position: relative;
+
+}
+.section2 .hold_price div{display: flex; justify-content: right;gap:10px}
+
+.section2 .hold_price button{
+    cursor: pointer;
+    /* padding: 10px; */
+    height: 30px;
+    width: 40px;
+    padding-top: 0;
+    text-align: center;
+    border: 1px solid orange;
+    background-color: white;
+    border-radius: 20px;
+}
+.section2 .hold_price button:hover{
+    background-color: orange
+}
+
+
+.section2 .hold_price button.list_delete{
+
+    /* padding: 10px; */
+    height: 30px;
+    width: 90px;
+    
+}
+
+
+

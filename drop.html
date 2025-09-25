@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>drop</title>
+    <style>
+        table{width: 100%; border: 3px solid black; height: 100vh;}
+        table td{width: 20%; border: 1px solid black;}
+    </style>
+</head>
+<body>
+    <table id="drop">
+    </table>
+    <script>
+        let drop = document.getElementById('drop');
+        let board = Array(Array(4),() => new Array(100))
+        let result = '';
+        //보드 판 생성 (표생성)
+        for(let i=0; i<4; i++){
+            result += '<tr>';
+            for(let j=0; j<board[i].length; j++){
+                result += '<td></td>'
+            }
+            result += `</tr>`
+        }
+        
+        drop.innerHTML = result;
+        function dropDown(){
+            
+
+        }
+    </script>
+    
+</body>
+</html>

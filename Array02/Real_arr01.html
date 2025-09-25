@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+
+</head>
+<body >
+    <p id="output"></p>
+    <script>
+        let result = '<table border ="1">';
+        let position = Array.from(Array(5), () => new Array(5).fill(0));
+        let sum = 1;
+        let output = document.getElementById('output');
+
+        for(let i=0; i< position.length; i++){
+            result += '<tr>';
+            for(let j=0; j<position[i].length; j++){
+                result += `<td> ${sum++}</td>`;
+            }
+            result += `</tr>`;
+        }
+        output.innerHTML = result;
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>3.큰</h1>
+    <button onclick="Fu()">버튼</button>
+    <p id ="output"></p>
+    <script>
+        function Fu(){
+        let name1='apple';
+        let name2=`watermelon`;
+        let output = document.getElementById('output');
+        let result = '';
+        result = name1.length >= name2.length ? name1 : name2
+
+        
+        output.innerHTML =  result;
+        }
+
+        
+    </script>
+</body>
+</html>

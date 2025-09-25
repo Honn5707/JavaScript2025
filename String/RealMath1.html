@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>1.랜덤이름뽑기</h1>
+    <button onclick="Fu()">버튼</button>
+    <p id ="output"></p>
+    <script>
+        function Fu(){
+       let names=["철수","영희","민수","지영","수현"];
+        let randomVar = Math.floor(Math.random()*100) + 1;
+        let output = document.getElementById('output');
+        let result = '';
+
+        result += names[randomVar%5];
+
+        output.innerHTML = result;
+        }
+
+        
+    </script>
+</body>
+</html>

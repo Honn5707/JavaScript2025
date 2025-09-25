@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date 연습 문제</title>
+</head>
+<body>
+    <button onclick="Fu('year')">년도</button>
+    <button onclick="Fu('day')">요일</button>
+    <button onclick="Fu('time')">시간</button>
+    <button onclick="Fu('birth')">생일</button>
+    <button onclick="Fu(`beforeDays`)">내일과 다음주</button>
+    <button onclick="Fu(`twoDays`)">날짜 비교</button>
+    <button onclick="Fu(`lastDays`)">마지막날</button>
+    <button onclick="Fu(`timeDif`)">차이</button>
+    <button onclick="Fu(`firstFri`)">첫금요일</button>
+    <button onclick="Fu(`weekend`)">주말확인</button>
+    
+    <p id="output"></p>
+
+    <script>
+
+        function Fu(_type){
+        let birth = `2025-9-30`;
+        let _date = new Date();
+        let todayMonth = _date.getMonth();
+        let todayYear = _date.getFullYear();
+        let todayDay = _date.getDate();
+
+        let _birth = new Date(birth);
+        _date.setHours(0,0,0,0);
+        let tomorrow =new Date(),nextweek= new Date();
+        tomorrow.setDate(_date.getDate()+1);
+        nextweek.setDate(_date.getDate()+7);
+        let day1 = new Date('2025-09-23');
+        let day2 = new Date('2025-12-25');
+        
+
+        let wee = ['일','월','화','수','목','금','토'];
+        let output = document.getElementById('output');
+
+        if(_type == 'year') output.innerHTML = '오늘은 '+ todayYear + '년입니다.'
+    
+        if(_type == 'day') output.innerHTML = '오늘은 '+ wee[_date.getDay()] + '요일입니다.'
+        
+        if(_type == 'time') output.innerHTML = `현재 시간은 ${_date.getHours()}시${_date.getMinutes()}분${_date.getSeconds()}초 입니다`;
+
+        if(_type == 'birth'){
+            if(_date>_birth) output.innerHTML = `생일까지 남은 시간 : ${365 - ((_date.getTime() - _birth.getTime()).toFixed(0)/(1000*3600*24)).toFixed(0)}일 남았습니다.`
+            if(_date<=_birth) output.innerHTML = `생일까지 남은 시간 : ${((_birth.getTime() - _date.getTime()).toFixed(0)/(1000*3600*24)).toFixed(0)}일 남았습니다.`
+        } 
+
+        if(_type == 'beforeDays') output.innerHTML = `내일: ${tomorrow.getDate()}일 다음주: ${nextweek.getDate()}일`
+        
+        //날짜비교 큰거 대입
+        if(_type == 'twoDays') output.innerHTML = day1 > day2 ? `${day1.getFullYear()}년 ${day1.getMonth()+1}월 ${day1.getDate()}일` :
+                                                                `${day2.getFullYear()}년 ${day2.getMonth()+1}월 ${day2.getDate()}일`; 
+
+        //현재달 마지막 날짜
+        if(_type == 'lastDays') {
+            _date.setMonth(_date.getMonth()+1);
+            _date.setDate(0);
+            output.innerHTML = _date.getMonth()+1 + '월의' + _date.getDate()+`일`;
+            //객체 초기화
+            _date = new Date();
+        }
+
+        if(_type == 'timeDif') {
+            let setTime = new Date()
+            setTime.setHours(18,0,0);
+      
+            
+            output.innerHTML =  ` ${_date.getHours()-setTime.getHours()}시${_date.getMinutes()-setTime.getMinutes()}분${_date.getSeconds()-setTime.getSeconds()}초 입니다`;
+            //객체 초기화
+            _date = new Date();
+        }
+        // 첫번쨰 금요일 구하기
+        if(_type == 'firstFri'){
+            //1일로 만들기
+            _date.setDate(1);//
+            //7일 순환
+            for(i=0; i<7; i++)
+                //요일이 금요일일 경우 값 출력+루프 탈출
+                if((_date.getDay()+i) % 7 === 5){
+                    output.innerHTML = `${_date.getDate()+i}일이 첫번쨰 금요일`
+                    break;
+                }
+            //객체 초기화
+            _date = new Date();
+        }
+
+
+        // 주말인지 아닌지 확인
+
+        if(_type=='weekend') output.innerHTML = _date.getDay() === (0||6) ? `오늘은 주말` : `오늘은 평일`;
+        
+        
+        }
+
+
+
+    </script>
+</body>
+</html>

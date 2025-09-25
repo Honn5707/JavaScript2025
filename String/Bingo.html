@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>빙고</title>
+
+    <style>
+        *{text-align: center; margin: 0; padding: 0; background-color: rgb(180, 180, 184);}
+  
+        body{ display: flex; flex-direction: column; align-items: center;}
+        header{
+            border-radius: 10px;
+            margin-top:30px ;
+            background-color: rgb(145, 145, 145);
+            font-size: 20px;
+            font-weight: 600;
+            width: 765px;
+            padding:  20px;
+            border-bottom: 3px solid rgba(0, 0, 0, 0.425);
+        }
+        section{
+            background-color: rgb(187, 187, 187);
+            border: 3px solid rgba(0, 0, 0, 0.425);
+            border-radius: 10px;
+            border-top: none;
+            display: flex;
+            flex-direction: column;
+            justify-items: center;
+            align-items: center;
+            justify-content: space-around;
+            width: 800px;
+            height: 700px;
+            
+        }
+        section p{
+            display: flex;
+            background-color: transparent;
+            font-weight: 500;
+            font-size: 33px;
+        }
+        section input{
+            background-color: rgb(216, 214, 214);
+            width: 500px;
+            height: 150px;
+            border-radius: 10px;
+            border: 4px solid rgba(0, 0, 0, 0.5);
+            font-size: 40px;
+        }
+        section button{
+            width: 350px;
+            height: 100px;
+            border-radius: 10px;
+            border: none;
+            background-color: rgb(167, 167, 167);
+            color: rgb(0, 0, 0);
+            font-size: 30px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        section #updownOutput{
+            background-color: transparent;
+            font-size: 30px;
+            font-weight: 600;
+            color: black;
+        }
+        footer{
+    
+            padding-top: 40px;
+            background-color: rgb(43, 43, 43);
+            font-size: 40px;
+            color: rgba(255, 255, 255, 0.747);
+            font-weight: 600;
+            width: 800px;
+            height: 100px;
+            border: 3px solid rgba(0, 0, 0, 0.418);
+            border-radius: 10px;
+            border-top: none;
+        }
+        #reset{
+            border: none;
+            border-radius: 10px;
+            margin-left: 30px;
+            font-size: 20px;
+            cursor: pointer;
+            text-decoration: none;
+            color: rgb(7, 7, 7);
+            padding: 10px 20px;
+            background-color: gray;
+        }
+        .red{color: red;background-color: transparent; font-size: 40px;}
+        .blue{color: blue; background-color: transparent; font-size: 40px;}
+    </style>
+</head>
+
+<body id = "body">
+    <header>숫자 맞추기 게임</header>
+    <section>
+        <p>1에서 100사이의 수를 입력하세요</p>
+        <input id="input" type="number">
+        <button onclick = "bingoFunction()">확인</button>
+        <p id ="updownOutput"></p>
+    </section>
+
+    <footer id ="tryOutput"></footer>
+
+    <script>
+        
+        let buttonTry = 0;
+        const body = document.getElementById('body');
+        const updownOutput = document.getElementById('updownOutput');
+        const tryOutput = document.getElementById('tryOutput');
+        let randomVar = Math.floor(Math.random()*100) +1; 
+        
+
+        function bingoFunction(){
+            console.log(randomVar);
+            let input = Number(document.getElementById('input').value);
+            buttonTry++;
+            let result = '';
+            if(randomVar > input) result = '<span class="blue">다운!</span>' 
+            else if(randomVar < input) result = '<span class="red">업!</span' 
+            else if(randomVar===input){
+                
+                 result = `빙고!!!! 게임을 다시 시작하시겠어요?? <a id='reset' href="Bingo.html">초기화</a><br>`;
+                 
+                 
+            }
+            else result = '올바른 값을 입력해 주세요'
+            updownOutput.innerHTML = result;
+            tryOutput.innerHTML = '시도횟수: ' +  buttonTry;
+            input = '';
+        }
+
+        function endGame(){
+            randomVar = Math.floor(Math.random()*100) +1; 
+            bingoFunction();
+        }
+
+        
+    </script>
+
+
+</body>
+</html>

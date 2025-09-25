@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <h1>성적 분석 프로그램</h1>
+    <p id="output"></p>
+    <script>
+
+        let output = document.getElementById('output');
+        let names = ['홍길동', '개나리', '진달래'];
+        let subjects = ['국어', '영어', '수학'];
+        let scores = [
+            [85, 90, 78], // 홍길동
+            [92, 88, 95], // 개나리
+            [76, 85, 83], // 진달래
+        ];
+        let total = 0;
+        let section = 1;
+        let result1 = '';
+        let result2 = '';
+        let result3 = ``;
+        let totalResult = ``;
+        let Catalog =0;
+        let Info =0;
+        let highScore = 0;
+        let highStudent = ``;
+        while(true){
+                 console.log(result1);
+
+                //데이터 합
+                if (section == 1) {
+
+                result1 += (Catalog == 0 && Info == 0) ? '[학생별/총점과 평균]<br>' : ``;
+
+                   if (scores[Catalog][Info] > highScore) {
+                        highScore = scores[Catalog][Info];
+                        highStudent = names[Catalog];
+                    }
+
+                if (Info == subjects.length) {
+                    result1 += `${names[Catalog]} 총점 : ${total}, 평균: ${(total / subjects.length).toFixed(2)} <br>`;
+                    Info = 0;
+                    total = 0;
+                    Catalog++;
+                } else {
+                    total += scores[Catalog][Info];
+                    Info++;
+                }
+
+                if (Catalog == names.length) {
+                    Catalog = 0;
+                    Info = 0;
+                    total = 0;
+                    section++;
+                }
+            }
+
+
+                //두번쨰 섹션   
+               if (section == 2) {
+                if (Catalog == 0 && Info == 0) result2 += `[과목별 평균]<br>`;
+
+                total += scores[Info][Catalog];  // Info = 학생 인덱스, Catalog = 과목 인덱스
+                Info++;
+
+                if (Info == names.length) {
+                    result2 += `${subjects[Catalog]}: ${(total / names.length).toFixed(2)}<br>`;
+                    Catalog++;
+                    Info = 0;
+                    total = 0;
+                }
+
+                if (Catalog == subjects.length) {
+                    section++;
+                }
+            }
+
+                
+                //세번째 섹션 
+                if(section==3){
+                     result3 += `[최고점수학생] <br> ${highStudent} (${highScore}점)`;
+                     break;
+                }
+            }
+            
+        totalResult = result1+result2+result3;
+
+        output.innerHTML= totalResult;
+    
+        
+               
+
+    </script>
+</body>
+</html>

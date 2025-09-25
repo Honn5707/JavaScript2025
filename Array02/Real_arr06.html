@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <h1> 이미지 </h1>
+    <!-- <button id = "input" >이미지 출력</button> -->
+    <div id = "output"></div>
+
+    <script>
+        let images = [['https://picsum.photos/id/1011/400/300','산'], 
+                     ['https://picsum.photos/id/1025/400/300','강아지'],
+                     ['https://picsum.photos/id/1003/400/300','건물'], 
+                     ['https://picsum.photos/id/1035/400/300','해변'],
+                     ['https://picsum.photos/id/1040/400/300','숲']
+                    ];
+
+        let input = document.getElementById('input');
+        let output = document.getElementById('output');
+        let result = '';
+        for(let i =0; i< images.length; i++){ //행 5번 루프
+            for(let j=0; j<images[i].length; j++){
+                if(j==0) result += `<img src = ${images[i][j]}> `;
+                if(j==1) result += `<span>${images[i][j]}</span>`;
+            }
+        }
+
+        output.innerHTML = result;
+
+
+    </script>
+</body>
+</html>

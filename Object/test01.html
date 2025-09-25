@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object</title>
+</head>
+<body>
+    <h1>Book 객체</h1>
+    <hr>
+    <div id="view"></div>
+    <script>
+        // Object 만드는 방식
+        // let 변수이름 = { title: 값1, name: 값2, price:값3 }
+        //title => key 
+        // 값1 => value
+        // 변수 book
+        // book안의 key:value
+
+        let book = {
+            title:'JavaScript',
+            author:'홍길동',
+            page: 500,
+            price: 15000, 
+            //book 객체 function()의 값을 입력할 수 있다.
+            info: function(){
+                // alert("문자") : 브라우저에서 메세지를 보여주는 창 
+                alert(`${this.title}책의 분량은 ${this.page}쪽입니다.`);
+            }
+            }
+
+        // 함수 호출
+        
+
+        console.log(book);
+        //book객체에 title로 접근
+        // 객체이름.프로퍼티 => book.title
+        console.log(book.title);
+        // DOM : HTML 태그에 javascript 가 접근하기 위한 방법
+        // getElementBYId("view") => id이름을 가진 태그연결
+        // querySelector("#view") => id이름을 가진 태그연결 (ID: # , CLASS: . ) 두가지 모두 사용 가능
+        // getElementBYClassName("view") => id이름을 가진 태그연결
+        // let bookInfo = document.getElementById('view');
+        // 둘 모두 DOM 메소드
+        let bookInfo = document.querySelector('#view');
+        bookInfo.textContent = `${book.title}의 저자는 ${book.author} 이고, 
+                                책의 페이지 수는 ${book.page}page이고,
+                                금앤은 ${book.price}이다`;
+        book.info(); 
+        
+
+    </script>
+</body>
+</html>

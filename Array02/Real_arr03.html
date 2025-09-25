@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>달력</title>
+    <style>
+
+        table, table td{
+            border: solid 1px black;
+            padding: 20px;
+            border-style:solid;
+            background-color: black;
+        }
+        table td{background-color: white;}
+    </style>
+</head>
+<body>
+    <h1> 달력 만들기 </h1>
+    <p id="output"></p>
+
+
+    <script>
+        let output = document.getElementById('output');
+        let result = '<table border="1">';
+        const weekdays = ['일', '월', '화', '수', '목', '금', '토'];
+        let Month = Array.from(Array(6),() => new Array(7).fill(``));
+        let sum = 1;
+        for(let i =0; i<Month.length; i++){
+            result += '<tr>';
+            for(let j = 0; j<Month[i].length; j++){
+                if(i==0) result += `<td>${weekdays[j]}</td>`
+                else if(sum <= 31) result += `<td>${sum++}</td>`;
+                else if(sum <= 35) result +=`<td></td>`;
+                else break;
+            }
+            result += `</tr>`;
+        }
+        output.innerHTML = result;
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+    <style>
+        body{display: flex; justify-content: center;}
+        *{text-align:  center;}
+        table{
+            width: 400px;
+            height: 70px;
+            border: none;
+            
+        }
+        td{width: 40px;}
+        a{cursor: pointer;}
+
+
+    </style>
+    
+</head>
+<body>
+    <div class="cal">
+    <table id = "output" border="1">
+        <tr class="high">
+            <td colspan="2"><a onclick="display(-1)"><i class="fa-solid fa-arrow-left"></i></a></td>
+            <td colspan="3"><span id = "years"></span> </td>
+            <td colspan="2"><a onclick="display(1)"><i class="fa-solid fa-arrow-right"></i></a></td>
+        </tr>
+        <tr id = 'weekly'></tr>
+    </table>
+    <table id="days" border="1"></table>
+    </div>
+        
+
+    
+
+    <script>
+
+
+        let years = document.getElementById('years');
+        let weekly = document.getElementById('weekly');
+        let days = document.getElementById('days');
+        let a = 0;
+     
+
+
+    function Cldr(num){
+        // resetF();
+        console.log(a);
+        let weekly2 = ['일','월','화','수','목','금','토'];
+        let result = '';
+        let _date = new Date();
+        let dayTotal = 1;
+        let end = false;
+
+        let _day = Array.from(Array(5),() => new Array(7));
+
+        //1일 지정
+        _date.setDate(1);
+        //월 지정
+        _date.setMonth(_date.getMonth() + Number(a));
+        //연도 출력
+        
+        result = `${_date.getFullYear()} 년 ${_date.getMonth() + 1} 월`;
+        years.innerText = result;
+        result = '';
+        
+        //요일출력
+        for(let i = 0; i<7; i++) result += `<td>${weekly2[i]}</td>`;
+        weekly.innerHTML = result;
+        result =``;
+
+        for(let i = 0; i<6; i++){
+
+            result +=`<tr>`;
+            for(let j=0; j<7; j++){
+                if(_date.getDate() == 1&& i != 0) end = true;
+                if((j >= _date.getDay() && i==0 && end==false)|| i>0 && end==false){
+                    result +=`<td>${dayTotal}</td>`;
+                    dayTotal++;
+                    _date.setDate(dayTotal);
+                }else result +='<td></td>';   
+            }
+            result  +=`</tr>`;
+            if(end==true)break;
+        }
+
+
+        days.innerHTML = result;
+        return _date.getMonth();
+    }
+    function display(num){
+            a+=Number(num);
+            Cldr(a);    
+        }
+        
+display(0);
+// addEventListener(MouseEvent,)
+
+
+ 
+        
+    </script>
+</body>
+</html>

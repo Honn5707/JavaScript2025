@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <h1> 성적표 </h1>
+    <p id="output"></p>
+
+    <script>
+        let scores = [
+            [85,90,80],
+            [70,60,75],
+            [95,100,90]
+        ]
+
+        let output = document.getElementById('output');
+        let result = ``;
+        let total = 0;
+
+        for(let i =0; i < scores.length; i++){
+            result += `학생 ${i+1}: `;
+            for(let j=0; j < scores[i].length; j++){
+                result += `${scores[i][j]}, `;
+                total += scores[i][j];
+            }
+            result += `| 총점: ${total} 평균 : ${(total/scores[i].length).toFixed(2)} <br>`
+            total = 0;
+        }
+
+        output.innerHTML = result;
+
+    </script>
+</body>
+</html>

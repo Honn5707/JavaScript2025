@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <p id="output"></p>
+
+    <script>
+        let output = document.querySelector('#output');
+
+        let student = [
+            {name:'홍길동', kor: 90, eng: 80, math:85},
+            {name:'성춘향', kor: 95, eng: 88, math:92},
+            {name:'이몽룡', kor: 70, eng: 75, math:80}
+        ]
+        let result =  '';
+        for(let i=  0; i<student.length; i++) {
+            let avg =  ((student[i].kor+student[i].eng+student[i].math) / 3).toFixed(2);
+            
+            result += `${student[i].name} 의 평균 점수 = ${avg} 점<br>`
+    
+        }
+        // console.log(result);
+        output.innerHTML  = result;
+    </script>
+</body>
+</html>
