@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <style>
+        body{display: flex; justify-content: center;}
+        *{text-align: center;}
+        .todo-container{display: flex; 
+            flex-direction: column;
+             justify-content: center; 
+             align-items: center;
+              border: 1px solid gray; 
+              width: 600px; border: none; 
+              border-radius: 10px; 
+              box-shadow: 5px 5px 1px rgba(0, 0, 0, 0.267);
+            }
+        input{width: 300px;
+            height: 40px;
+             border: 1px solid rgba(0, 0, 0, 0.192); 
+             border-radius: 10px;
+            }
+        button{cursor: pointer;
+             width: 300px;
+              margin-top: 10px; 
+              height: 45px; background-color: lightblue; 
+              border: none; 
+              border-radius: 10px; 
+              color: white;}
+        ul{padding: 0;
+             list-style: none; 
+             display: flex; 
+             flex-direction: column;  gap:10px; width: 300px;}
+        ul li{ height: 40px;
+             font-size: 20px; 
+             width: 280px; 
+             border: 1px solid rgba(0, 0, 0, 0.192); 
+             display: flex; 
+             justify-content:space-between;
+              padding: 15px 10px;
+              border-radius: 10px; 
+              color: black; align-items: center;
+            }
+        a{cursor: pointer; 
+            font-weight: 400; 
+            color: red; 
+            font-size: 30px; 
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="todo-container">
+        <h1>할 일 목록</h1>
+        <div class="input-area">
+        </div>
+        <input id="task" type="text" placeholder="할 일 입력" />
+        <button onclick="addTask()">추가</button>
+        <ul id="tasks"></ul>
+    </div>
+
+    <script>
+        let count = 0;
+        
+        let tasks = document.querySelector('#tasks');
+        function addTask(){
+            let task = document.querySelector('#task').value.trim();
+            let resTask = document.createElement('li');
+            let remove = document.createElement('a');
+            
+            resTask.innerHTML = task;
+            remove.innerHTML = 'X';
+            resTask.setAttribute('id',count)
+            remove.setAttribute('onclick',`removeFunction(${count})`)
+            count++;
+            tasks.appendChild(resTask).appendChild(remove);
+
+
+
+        }
+
+        //f(x).onclick = function(){} 가능
+
+        function removeFunction(rescount){
+            let task02 = document.getElementById(rescount)
+            task02.remove();
+            count--;
+        }
+    </script>
+
+</body>
+</html>

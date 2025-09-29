@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEET PLAY SHARE, 메가박스</title>
+    <style>
+        *{margin: 0; padding: 0;}
+
+        .chair_form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap:40px;
+            width: 1000px;
+            height: 800px;
+            border: 1px solid black;
+            position: relative;
+        }
+
+        .per_add{
+
+            display: flex;
+            width: 1000px;
+  
+            gap:20px;
+        }
+
+        .per_add > div {
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            
+        }
+
+        .per_add > div > button{
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            background-color: white;
+            border: 1px solid black;
+        }
+        .per_add > div > input{
+            text-align: center;
+            font-size: 15px;
+            width: 28px;
+            height: 28px;
+            background-color: white;
+            border: 1px solid black;
+
+        }
+        .per_add > div > span{
+            margin-right: 15px;
+        }
+        .reserve_class{
+            display: flex;
+            
+            flex-direction: column;
+            position: absolute;
+            left: 5%;
+            top: 30%
+        }
+
+        .reserveform_class td{
+            cursor: pointer;
+            width: 25px;
+            height: 25px;
+            text-align: center;
+        }
+         .reserveform_class td:hover{
+           background-color: green;
+           
+        }
+
+        .main_form{
+            margin-top: 30px;
+        }
+          .main_form table{
+            border: none;
+        }
+
+
+        .select_seatform{
+            
+        }
+
+        .select_seatform ul{
+            align-items: center;
+            display: flex;
+            gap: 10px;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            height: 300px;
+            list-style: none;
+            position: absolute;
+            width: 150px;
+            border: 1px solid black;
+            right: 10%;
+            top: 40%;
+        }
+
+         .select_seatform ul #seat_selected{
+            background-color: rgb(94, 255, 94);
+        }
+        
+        .select_seatform ul li{
+            text-align: center;
+            vertical-align: middle;
+            font-size: 40px;
+            width: 50px;
+            height: 50px;
+            border: 1px solid black;
+        }
+       
+      
+    </style>
+</head>
+<body>
+    <div class="chair_form">
+        <header>
+            <h1>빠른예매</h1>
+            <p>관람인원 선택</p>
+        </header>    
+        <section>
+            <div class="reserve_class">
+                <div class = 'per_add'>
+                    <div class="adult_class">
+                        <span>성인</span>
+                        <button>-</button>
+                        <input type="number" class="adult_input" value="1">
+                        <button>+</button>
+                    </div>
+                    <div class="noadult_class">
+                        <span>청소년</span>
+                        <button>-</button>
+                        <input type="number" class="noadult_input" value="1">
+                        <button>+</button>
+                    </div>
+                    <div class="disable_class">
+                        <span>장애인</span>
+                        <button>-</button>
+                        <input type="number" class="disable_input" value="1">
+                        <button>+</button>
+                    </div>
+                    <div class="first_class">
+                        <span>우대</span>
+                        <button>-</button>
+                        <input type="number" class="first_input"value="1">
+                        <button>+</button>
+                    </div>
+                </div>
+
+                <div class="main_form">
+                    <table class="reserveform_class" border="1"></table>
+                </div>
+
+
+            </div>
+
+            <div class="select_seatform">
+
+                
+            </div>
+        </section>
+    </div>
+
+
+    <script>
+        //전역 변수 설정
+        const reserveform_class = document.querySelector('.reserveform_class');
+        const select_seatform = document.querySelector('.select_seatform')
+
+        let seats = Array.from(Array(10), () => new Array(10));
+
+        function Seatform(){
+            let result = '';
+            let count = 1;
+            let chairLine = "A"
+            for(let i=0; i<seats.length; i++){
+                    result += `<tr><td>${String.fromCharCode(chairLine.charCodeAt()+i)}</td>`;
+                    console.log(seats);
+                for(let j=0; j<seats[i].length; j++){
+                    result += `<td onclick ="addlist()">${count}</td>`;
+                    count++;
+                }
+                result += `</tr>`;
+            }
+            reserveform_class.innerHTML = result + '</table>';
+        }
+
+        function Seatadd(){
+            
+            for(let i=0; i<reserved_count; i++){
+
+            }
+            
+        }
+
+        function addlist(){
+   
+            let result = '<ul>';
+            let reserved_count = 1;
+            for(let i = 0; i<8; i++){
+                if(i<reserved_count)result += `<li id:"seat_selected">-</li>`;
+          
+                else result += `<li>-</li>`
+            
+            }
+            result += '</ul>';
+            
+            select_seatform.innerHTML = result;
+        }
+        
+
+         Seatform();
+
+        
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        .blue{
+            color:blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        <span>난 span 태그</span>
+    </h1>
+
+    <script>
+        // 첫번째 h1 태그에 p태그를 추가하려고 한다.
+        let titleChange = document.getElementsByTagName('h1')[0];
+        let p01 = document.createElement('p');
+        p01.classList.add('blue');//<p class="blue">
+        p01.classList.remove('blue');//<p class="blue">
+        p01.innerHTML = '난 js로 추가된 p태그야'
+        titleChange.appendChild(p01);
+        
+    </script>
+
+</body>
+</html>

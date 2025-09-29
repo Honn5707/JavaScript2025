@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM 기초 문제</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <p id = "text"></p>
+
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+
+
+    
+    <p class="q3">첫 번째 문장</p>
+    <p class="q3">두 번째 문장</p>
+
+    <ul >
+        <li id="q4">사과</li>
+        <li id="q4">바나나</li>
+        <li id="q4">체리</li>
+    </ul>
+
+    <ul >
+        <li class ='q5'>사과</li>
+        <li class ='q5'>바나나</li>
+        <li class ='q5'>체리</li>
+    </ul>
+
+     <ul id="list"></ul>
+
+
+     <ul >
+        <li id="q7">삭제될 항목</li>
+        <li id="q7" >남길 항목</li>
+    </ul>
+
+     <div id="content"></div>
+
+     <input type="text" id="userInput" value="안녕">
+     <button id="btn">확인</button>
+
+    <script>
+        // <p class="p2">one</p>
+        // <p class ="p2">two</p>
+        // getElementByTagName = > 배열과 유사 함
+        // document.getElementsBaTagName)('p') =>10[object HTMLCollection] (배열x) => Array.from사용
+        
+        //1번 문제
+        let q1 = document.querySelector('#text');
+        q1.innerHTML = "DOM 실습 중급"
+
+        //queryselectorAll() => 배열로 만들기 불가능
+        let box = document.querySelectorAll('.box');
+        
+        //2번문제
+        console.log(typeof(box));
+
+        //배열생성 Array.from()
+        // box를 배열로 생성
+        Array.from(box).forEach((box)=>{
+                box.style.backgroundColor=`yellow`
+        })
+        
+
+        //3번문제
+        
+        for(let i =0; i<2; i++){
+            let q3 = document.querySelectorAll('.q3')[i];
+            q3.style.color = "blue"
+        }
+
+        //4번 문제
+      
+        //선택자가 존재 하지 않을 경우 부모 자식 태그를
+         let q4 = document.querySelector('ul li');
+         q4.innerHTML = '포도';
+        
+
+         //5번 문제 
+
+         let q5 = document.querySelectorAll('ul.q5');
+          Array.from(q5).forEach((item, i) => {
+            item.textContent = '과일';
+            
+         })   
+         
+         
+         //6번 문제
+    
+         let list = document.querySelector('#list');
+         let list2 = document.createElement('li');
+         list2.textContent = '새항목';
+         list.appendChild(list2);
+
+         //7번 문제 
+         let q7 = document.querySelector('#q7');
+         q7.remove();
+         
+         //8번 문제
+         let content = document.querySelector('#content')
+         content.innerHTML += '<p>DOM 연습 </p>'
+
+         //9번 문제
+         let userInput = document.querySelector('#userInput')
+         let btn = document.querySelector(`#btn`);
+    </script>
+</body>
+</html>

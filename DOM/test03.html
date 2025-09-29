@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM 기초 문제</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+
+    <ul >
+        <li class ='q5'>사과</li>
+        <li class ='q5'>바나나</li>
+        <li class ='q5'>체리</li>
+    </ul>
+
+     <ul id="list"></ul>
+
+
+     <ul >
+        <li id="q7">삭제될 항목</li>
+        <li id="q7" >남길 항목</li>
+    </ul>
+
+     <div id="content"></div>
+
+     <input type="text" id="userInput" value="안녕">
+     <button id="btn">확인</button>
+
+    <script>
+        
+        
+
+         //5번 문제 
+
+         let q5 = document.querySelectorAll('ul.q5');
+          Array.from(q5).forEach((item, i) => {
+            item.textContent = '과일';
+            
+         })   
+         
+         
+         //6번 문제
+    
+         let list = document.querySelector('#list');
+         let list2 = document.createElement('li');
+         list2.textContent = '새항목';
+         list.appendChild(list2);
+
+         //7번 문제 
+         let q7 = document.querySelector('#q7');
+         q7.remove();
+         
+         //8번 문제
+         let content = document.querySelector('#content')
+         content.innerHTML += '<p>DOM 연습 </p>'
+
+         //9번 문제
+         let userInput = document.querySelector('#userInput').value;
+         let btn = document.querySelector(`#btn`);
+         btn.addEventListener('click', () => {
+            console.log(userInput);
+         }) 
+         
+    </script>
+</body>
+</html>

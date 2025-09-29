@@ -10,19 +10,27 @@
 <body>
     <div class="wrap">
       <div class="order_menu">
-        <h2>원하시는 음료를 선택해 주세요</h2>
+        <h2 onclick="Listoption()">원하시는 음료를 선택해 주세요</h2>
         <p>Please choose the drink you want.</p>
         <div class="section1">
-          <h2>MENU</h2>
+            <div class="menu_category">
+          <button class="category_button" onclick="Categorychange(1)">커피</a>
+          <button class="category_button" onclick="Categorychange(2)">음료</a>
+          <button class="category_button" onclick="Categorychange(3)">디저트</a>
+          <button class="category_button" onclick="Categorychange(4)">상품</a>
+            </div>
+          
           <div class="menubox"></div>
         </div>
     </div>
 
     <div class="section2">
-          <h2>주문내역</h2>
+          <div class="list_header">
+            <button onclick="Allremove()">모두 제거</button>    
+            <h2>주문내역</h2></div>
           <div class="orderbox"></div>
           <div class="order_result">
-            <h2>총 주문금액 : <span class="pay"></span></h2>
+            <h2> <span class="pay"></span></h2>
             <span class="line"></span>
             <button class="btn">현금결제</button>
         </div>
@@ -32,104 +40,177 @@
     
     <!-- 스크립트 -->
     <script>
+        //DOM
         const pay = document.querySelector(`.pay`);
         const menubox = document.querySelector(`.menubox`);
         const orderbox = document.querySelector(`.orderbox`);
 
-
-
+        //전역변수 설정 
+            //메뉴 객체
         let menus = [
-        { id:0, name: '아메리카노', type: 'HOT', price: 1000,quantity:0 },
-        { id:1, name: '아메리카노', type: 'ICE', price: 1300,quantity:0 },
-        { id:2, name: '바닐라라떼', type: 'HOT', price: 2500,quantity:0 },
-        { id:3, name: '바닐라라떼', type: 'ICE', price: 2800,quantity:0},
-        { id:4, name: '연유라떼', type: 'HOT', price: 2500,quantity:0 },
-        { id:5, name: '연유라떼', type: 'ICE', price: 2800,quantity:0 },
-        { id:6, name: '카라멜마끼아또', type: 'HOT', price: 2800,quantity:0 },
-        { id:7, name: '카라멜마끼아또', type: 'ICE', price: 3000,quantity:0 },
-        { id:8, name: '카페모카', type: 'HOT', price: 3000,quantity:0 },
-        { id:9, name: '카페모카', type: 'ICE', price: 3300,quantity:0 },
-        { id:10, name: '딥카페라테', type: 'HOT', price: 3400,quantity:0 },
-        { id:11, name: '딥카페라테', type: 'ICE', price: 3700,quantity:0 },
+            
+        { id:0, name: '아메리카노', type: 'ICE', price: 2000,quantity:0, category:1 },
+        { id:1, name: '아메리카노', type: 'HOT', price: 1800,quantity:0 , category:1},
+        { id:2, name: '카페라뗴', type: 'ICE', price: 2500,quantity:0 , category:1},
+        { id:3, name: '카페라떼', type: 'HOT', price: 2800,quantity:0, category:1},
+        { id:4, name: '바닐라라떼', type: 'iCE', price: 2500,quantity:0 , category:1},
+        { id:5, name: '바닐라라떼', type: 'HOT', price: 2800,quantity:0 , category:1},
+        { id:6, name: '카라멜마끼아또', type: 'ICE', price: 2800,quantity:0 , category:1},
+        { id:7, name: '카라멜마끼아또', type: 'HOT', price: 3000,quantity:0 , category:1},
+        { id:8, name: '카페모카', type: 'ICE', price: 3000,quantity:0 , category:1},
+        { id:9, name: '카페모카', type: 'HOT', price: 3300,quantity:0 , category:1},
+        { id:10, name: '할메가커피', type: 'ICE', price: 3400,quantity:0 , category:1},
+        { id:11, name: '메가할메가커피', type: 'ICE', price: 3700,quantity:0 , category:1},
+        { id:12, name: '메가리카노', type: 'ICE', price: 3000,quantity:0, category:1 },
+        { id:13, name: '카푸치노', type: 'ICE', price: 1300,quantity:0 , category:1},
+        { id:14, name: '카푸치노', type: 'HOT', price: 2500,quantity:0 , category:1},
+        { id:15, name: '에스프레소', type: 'HOT', price: 2800,quantity:0, category:1},
+        { id:16, name: '누룽누룽 바삭 프라페', type: 'BEVERAGE', price: 4000,quantity:0, category:2 },
+        { id:17, name: '피넛버터 초코 프라페', type: 'BEVERAGE', price: 4800,quantity:0 , category:2},
+        { id:18, name: '할메가커피 스무디', type: 'BEVERAGE', price: 3500,quantity:0 , category:2},
+        { id:19, name: '애플베리 스무디', type: 'BEVERAGE', price: 3800,quantity:0, category:2},
+        { id:20, name: '제로 애사비 젤리에이드', type: 'BEVERAGE', price: 3500,quantity:0 , category:2},
+        { id:21, name: '초코젤라또 말차라뗴', type: 'BEVERAGE', price: 3800,quantity:0 , category:2},
+        { id:22, name: '제로 체리콜라', type: 'BEVERAGE', price: 2800,quantity:0 , category:2},
+        { id:23, name: '제로 부스트 에이드', type: 'BEVERAGE', price: 3000,quantity:0 , category:2},
+        { id:24, name: '블루베리요거트스무디', type: 'BEVERAGE', price: 3000,quantity:0 , category:2},
+        { id:25, name: '블루베리플럼주스', type: 'BEVERAGE', price: 3300,quantity:0 , category:2},
+        { id:26, name: '골드키위주스', type: 'BEVERAGE', price: 3400,quantity:0 , category:2},
+        { id:27, name: '귤 톡톡 젤리스무디', type: 'BEVERAGE', price: 3700,quantity:0 , category:2},
+        { id:28, name: '왕메가사과유자', type: 'BEVERAGE', price: 3000,quantity:0, category:2 },
+        { id:29, name: '딸기라떼', type: 'BEVERAGE', price: 1300,quantity:0 , category:2},
+        { id:30, name: '상큼 리치티', type: 'BEVERAGE', price: 2500,quantity:0 , category:2},
+        { id:31, name: '제로 복숭아 아이스티', type: 'BEVERAGE', price: 2800,quantity:0, category:2},
+        { id:32, name: '피넛버터 애플 샌드', type: 'DESERT', price: 2500,quantity:0 , category:3},
+        { id:33, name: '매콤 비빔 주먹빵', type: 'DESERT', price: 2800,quantity:0 , category:3},
+        { id:34, name: '요거젤라또 초코제리믹스', type: 'DESERT', price: 2800,quantity:0 , category:3},
+        { id:35, name: '멕시칸 미트칠리 핫도그', type: 'DESERT', price: 3000,quantity:0 , category:3},
+        { id:36, name: '메가베리 아사이볼', type: 'DESERT', price: 3000,quantity:0 , category:3},
+        { id:37, name: '짱 센 어린이상!고구마루 케이크', type: 'DESERT', price: 3300,quantity:0 , category:3},
+        { id:38, name: '치즈 품은 감자빵', type: 'DESERT', price: 3400,quantity:0 , category:3},
+        { id:39, name: '엠지씨네 메가칩', type: 'DESERT', price: 3700,quantity:0 , category:3},
+        { id:40, name: '와앙 메가초코 크로칸슈', type: 'DESERT', price: 2500,quantity:0 , category:3},
+        { id:41, name: '로열 밀크티 스모어 쿠키', type: 'DESERT', price: 2800,quantity:0 , category:3},
+        { id:42, name: '초코 스모어 쿠키', type: 'DESERT', price: 2800,quantity:0 , category:3},
+        { id:43, name: '와앙메리칸 뽀득 핫도그', type: 'DESERT', price: 3000,quantity:0 , category:3},
+        { id:44, name: '버터버터 팥슈크림 페스츄리', type: 'DESERT', price: 3000,quantity:0 , category:3},
+        { id:45, name: '햄앤치즈샌드위치', type: 'DESERT', price: 3300,quantity:0 , category:3},
+        { id:46, name: '바질 치폴레치킨 치아바타', type: 'DESERT', price: 3400,quantity:0 , category:3},
+        { id:47, name: '핫 치킨& 딥치즈 치아바타', type: 'DESERT', price: 3700,quantity:0 , category:3},
+        { id:48, name: '빙글빙글 마루 키링', type: 'MD', price: 13000,quantity:0 , category:4},
+        { id:49, name: '언니랑 마루랑!피크닉 매트', type: 'MD', price: 25000,quantity:0 , category:4},
+        { id:50, name: '마루 쓱싹 마루 깔끔 파우치', type: 'MD', price: 17000,quantity:0 , category:4},
+        { id:51, name: '마루 덥석 마루 꼴깍 텀블러', type: 'MD', price: 10000,quantity:0 , category:4},
         ];
+            //장바구니 배열(객체 ID 저장)
         let cart = new Array();
+            //장바구니 상품 개수
         let priceCount = 0;
+            //카테고리 설정 변수
+        let categoryCount = 1;
+            //키오스크 관리자(bool)
+        let kisokAdmin = false;
 
-
+        //함수( 메뉴판 작성)
         function Menuboard(){
-        let result = '';
+            
+            let result = '';
 
+            //메뉴판
+            for(let i=0; i<menus.length; i++){
+                //내가 지정한 카테고리의 상품일경우 실행
+                if(menus[i].category == categoryCount){
+                //버튼생성
+                result += `<button class="menu" onclick = "Priceadd(${i})">`;
+                //온도 출력
+                result += `<span class ="menu_type">${menus[i].type}</span>`;
+                //이미지 출력
+                result +=  `<img src = "image/${menus[i].type}${i+1}.jpg"></img>`;
+                //이름 출력
+                result += `<span class="menu_name"><br>${menus[i].name}</span>`
+                //가격 출력
+                result += `<span class="menu_price"><br>${menus[i].price}원</span>`
+                }
+            }
 
-        for(let i=0; i<menus.length; i++){
-            //버튼생성
-            result += `<button class="menu" onclick = "Priceadd(${i})">`;
-            //온도 출력
-            result += `<span class ="menu_type">${menus[i].type}</span>`;
-            //이미지 출력
-            result += menus[i].type == "ICE" ? `<img src = "image/ice.png"></img>` :  `<img src = "image/hot.png"></img>`;
-            //이름 출력
-            result += `<span class="menu_name"><br>${menus[i].name}(${menus[i].type})</span>`
-            //가격 출력
-            result += `<span class="menu_price"><br>${menus[i].price}원</span>`
-        }
-
-        menubox.innerHTML = result;
-        
+            menubox.innerHTML = result;
+            
     }
 
+    //상품 더하기
     function Priceadd(priceIndex){
-        if(menus[priceIndex].quantity == 0){
-            if(priceCount >=6) alert('최대 주문은 6건 까지 가능합니다!');
-            else{
-            cart[priceCount] = menus[priceIndex].id;
-            priceCount++;
+        if(kisokAdmin == true){ 
+             menus.splice([priceIndex],1); 
+             Menuboard();
+             return 0;
         }
+        //상품 수량이 0 일경우 cart에 ID 저장, 장바구니상품갯수 1 증가
+        if(menus[priceIndex].quantity == 0){
+            cart[priceCount] = menus[priceIndex].id;
         }
         
+        //상품이 10개 이상일경우 추가 구매 불가
         if(menus[priceIndex].quantity < 10 ){
         menus[priceIndex].quantity++;
         pricelist();
         }else alert('음료 최대 주문은 10잔 입니다.');
     }
+    //상품 빼기
     function Pricereduce(priceIndex){
-        if(menus[priceIndex].quantity > 1)menus[priceIndex].quantity--;
+        //상품수가 1보다 클때 감소
+        if(menus[priceIndex].quantity > 1){
+            menus[priceIndex].quantity--;
+            pricelist();
+        }
+        //1보다 작다면 pricedelete  함수 호출
         else{
-             menus[priceIndex].quantity = 0;
-             priceCount--;
-             let idx = cart.indexOf(menus[priceIndex].id);
-            
-                cart.splice(idx, 1); 
-            
-
-             console.log(cart);
-             console.log(priceCount);
+             Pricedelete(priceIndex);
         }
-        pricelist();
+        
     }
+    //상품 삭제
     function Pricedelete(priceIndex){
+        // index번의 객체의 수량을 0으로 만든뒤, 상품수량 감소, cart에 저장된 ID 삭제
         menus[priceIndex].quantity = 0;
-        priceCount--;
         let idx = cart.indexOf(menus[priceIndex].id);
-        if (idx !== -1) {
-        cart.splice(idx, 1); // 그 ID가 있는 위치에서 1개 삭제
-        }
+        cart.splice(idx, 1); 
+        pricelist();
+    }
+    //카테고리 변경
+    //버튼 누를 시 onclick에 지정된 인수로 카테고리 변경후 메뉴 목록함수 재실행 
+    function Categorychange(categoryParameter){
+        categoryCount = categoryParameter;
+        Menuboard(); 
+    }
+    //카테고리 모두 삭제
+    function Allremove(){
+        
+        //반복문 수량 0 으로 처리, 카트 id 초기화
+        for(let i = 0; i<cart.length-1; i++){
 
-        console.log(cart);
-        console.log(priceCount);
+            let imPrice = new Object(menus[cart[i]]);
+            imPrice.quantity= 0;
+        }
+        //상품 갯수 0
+        priceCount = 0;
+        
         pricelist();
     }
 
-    //상품 목록
-
+    //장바구니
     function pricelist(){
         let result = '';
         let total = 0;
-        for(let i = 0; i<priceCount; i++){
-
-            let imPrice = new Object(menus[cart[i]]);
-        
+        for(let i = 0; i<cart.length-1; i++){
+            // 장비구니 i번쨰에 담겨져 있는 id를 통해 배열 참조후
+            // 해당 객체를 imPrice변수에 담음( 루프마다 초기화 )
+                let imPrice = new Object(menus[cart[i]]);
+            
                 total += imPrice.price*imPrice.quantity;
                 result += `<div class = "hold_price">`
+                    //이미지\
+                console.log(imPrice.type  +' '+ (Number([cart[i]])+1));
+                result += `<img src="image/${imPrice.type}${Number(cart[i])+1}.jpg">`
                     //이름
                 result += `${imPrice.name}(${imPrice.type}): `;
                     //수량
@@ -139,23 +220,31 @@
                     //하단 버튼
                 result += `<div><button class = "list_plus" onclick ="Priceadd(${cart[i]})">+</button>
                             <button class = "list_minus" onclick ="Pricereduce(${cart[i]})">-</button><button class = "list_delete" onclick ="Pricedelete(${cart[i]})">선택취소</button>
-                            </div>`
-                result += `</div>`
-                
-                        
-            
-
-           
+                            </div>`;
+                result += `</div>`;
         }
          orderbox.innerHTML = result;
-        pay.innerHTML = total +'원';
+        pay.innerHTML = '총 상품 갯수:' + priceCount+'개<br>' + '상품금액:'+ total +'원';
         // for(let i = 0; i<menus.length; i++){
         //     menus[i].quantity = 0;
         // }
     }
 
+    function Listoption(){
+        if(kisokAdmin == false){
+            alert('관리자 모드: 상품 클릭시 제거');
+            kisokAdmin =true;
+        }else{
+            alert('관리자 모드 해제');
+            kisokAdmin = false;
+        }
         
+    }
 
+
+
+        
+    //기본 함수 호출
     Menuboard();
 
     </script>
