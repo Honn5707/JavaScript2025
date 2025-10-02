@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>버튼1</button>
+    <button id = "btn2">버튼2</button>
+
+    <button id="toggleBtn">이미지 토글</button>
+    <img id="myImg" src="images/pic-2.jpg" style="display: block" />
+     <p id="text">색상이 바뀝니다</p>
+    <button id="colorBtn">색상 변경</button> <br>
+
+    <input id="num1" type="number"> +
+    <input id="num2" type="number">
+    <button id="sumBtn">계산</button>
+    <div id="result"></div>
+
+
+    <input id="inputBox" type="text" placeholder="입력해보세요">
+
+    <script>
+        //2번~6번
+        let greetUser = (para01) => console.log( '안녕하세요!, ' +para01);
+        greetUser(`철수`);
+
+        //2번 
+        let getDiscountPrice = (price, rate) => console.log(price*rate) 
+        getDiscountPrice(10000, 0.1)
+
+        //3번
+        let btn = document.querySelector('button')
+        let count = 0;
+        btn.onclick = function(){
+            count++;
+            console.log(count)
+        }
+
+        //4번
+        let getTotal = (cart) => {
+            let result = 0;
+            for(let i=0; i<cart.length; i++)result += cart[i];
+         
+            return result;
+        } 
+        console.log(getTotal([1000,2000,3000]))
+
+        //5번
+        let validatePassword = (pw) => {
+            if(pw.length >= 8) return true;
+            else return false;
+        }
+        console.log(validatePassword('32322'));
+        
+
+        //6번 
+        let btn2 = document.querySelectorAll('button')[1]
+        
+        btn2.onclick = function(){
+            let today = new Date()
+            console.log(today.tolcoalDateString());
+            //지역에 맞는 날짜 출력
+        }
+    
+        //7번
+        let toggleBtn = document.getElementById('toggleBtn');
+        let myImg = document.getElementById('myImg');
+
+        toggleBtn.onclick = function(){
+            if(myImg.style.display==`none`) myImg.style.display = `block`; 
+            else if(myImg.style.display==`block`) myImg.style.display = `none`; 
+        }
+
+        //8번
+        let text = document.getElementById('text');
+        let button = document.getElementById('colorBtn');
+        let i = 0;
+        const colors = ['red', 'blue', 'green']
+        button.onclick = function(){
+            text.style.color = colors[i%3];
+            i++;
+        }
+
+        //9번
+        
+        let sumBtn = document.getElementById('sumBtn');
+        
+        sumBtn.onclick = function(){
+            let num1 = Number(document.getElementById('num1').value)
+            let num2 = Number(document.getElementById('num2').value)
+            let result = document.getElementById('result')   
+            result.innerHTML = '결과: '+ (num1+num2)    ;
+        }
+
+        //10번
+
+        
+        addEventListener('keyup', function(){
+            let inputBox = document.getElementById('inputBox').value;
+            console.log(inputBox)
+        })
+
+
+
+        
+    </script>
+</body>
+</html>

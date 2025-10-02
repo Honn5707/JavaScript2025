@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <div id="container">
+     <img id="img" src="images/girl.png" >
+    </div>
+
+    <script>
+        let container = document.getElementById('container');
+        let img1 = document.getElementById('img');
+        let imagebool = false;
+
+        img1.addEventListener('mouseover',function(){
+            console.log(img1.src)
+            img1.src = imagebool ? 'images/girl.png' : 'images/boy.png'
+            imagebool = imagebool ? false : true;
+        })  
+    </script>
+</body>
+</html>
